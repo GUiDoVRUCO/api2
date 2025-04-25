@@ -1,0 +1,36 @@
+{"level":"info","message":"Conectado ao MongoDB Atlas","timestamp":"2025-04-25T21:59:52.677Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-04-25T21:59:52.679Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:00:03.200Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:01:03.041Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:01:23.038Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:01:43.053Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:02:03.058Z"}
+{"level":"info","message":"Conectado ao MongoDB Atlas","timestamp":"2025-04-25T22:10:38.036Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-04-25T22:10:38.039Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:10:47.086Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:11:46.934Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:12:06.939Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:12:26.936Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:12:46.937Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:13:06.940Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:14:17.846Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:15:17.855Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:15:37.874Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:15:57.878Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:16:17.881Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:16:37.882Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:17:48.832Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:18:48.835Z"}
+{"level":"info","message":"QR Code gerado! Escaneie para conectar ao WhatsApp.","timestamp":"2025-04-25T22:19:08.840Z"}
+{"level":"info","message":"Conectado ao MongoDB Atlas","timestamp":"2025-04-25T22:25:43.467Z"}
+{"level":"info","message":"Servidor rodando na porta 3000","timestamp":"2025-04-25T22:25:43.469Z"}
+{"level":"info","message":"QR Code gerado e salvo como qrcode.png!","timestamp":"2025-04-25T22:25:52.446Z"}
+{"level":"info","message":"QR Code aberto no VS Code! Escaneie com o WhatsApp.","timestamp":"2025-04-25T22:25:53.790Z"}
+{"level":"info","message":"QR Code gerado e salvo como qrcode.png!","timestamp":"2025-04-25T22:26:52.274Z"}
+{"level":"info","message":"QR Code aberto no VS Code! Escaneie com o WhatsApp.","timestamp":"2025-04-25T22:26:53.548Z"}
+{"level":"info","message":"Bot da Barbearia Iniciado!","timestamp":"2025-04-25T22:28:15.380Z"}
+{"level":"info","message":"QR Code gerado e salvo como qrcode.png!","timestamp":"2025-04-25T22:28:41.571Z"}
+{"level":"info","message":"QR Code aberto no VS Code! Escaneie com o WhatsApp.","timestamp":"2025-04-25T22:28:42.846Z"}
+{"level":"info","message":"Bot da Barbearia Iniciado!","timestamp":"2025-04-25T22:28:44.085Z"}
+{"level":"info","message":"Bot da Barbearia Iniciado!","timestamp":"2025-04-25T22:28:44.088Z"}
+{"level":"error","message":"Cliente desconectado: LOGOUT","timestamp":"2025-04-25T22:28:45.802Z"}
