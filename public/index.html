@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Usuários</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
+    .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+    h1 { text-align: center; }
+    .form-group { margin-bottom: 15px; }
+    input, button { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+    button { background: #007bff; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background: #007bff; color: #fff; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Controle de Usuários</h1>
+    <div id="login-form" class="form-group">
+      <input type="text" id="username" placeholder="Usuário (gui12)" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button onclick="login()">Entrar</button>
+      <p class="error" id="login-error"></p>
+    </div>
+    <div id="user-management" style="display: none;">
+      <div class="form-group">
+        <input type="text" id="new-username" placeholder="Novo usuário">
+        <label><input type="checkbox" id="can-install"> Pode instalar código</label>
+        <button onclick="addUser()">Adicionar Usuário</button>
+      </div>
+      <table id="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Pode Instalar</th>
+            <th>Criado Em</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="user-list"></tbody>
+      </table>
+      <button onclick="logout()">Sair</button>
+    </div>
+  </div>
+
+  <script>
+    let token = null;
+
+    async function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const error = document.getElementById('login-error');
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.error) {
+          error.textContent = data.error;
+          return;
+        }
+        token = data.token;
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('user-management').style.display = 'block';
+        loadUsers();
+      } catch (err) {
+        error.textContent = 'Erro ao fazer login';
+      }
+    }
+
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/users', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const users = await res.json();
+        const tbody = document.getElementById('user-list');
+        tbody.innerHTML = '';
+        users.forEach(user => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${user.id}</td>
+            <td>${user.username}</td>
+            <td><input type="checkbox" ${user.canInstall ? 'checked' : ''} onchange="updatePermission(${user.id}, this.checked)"></td>
+            <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+            <td><button onclick="deleteUser(${user.id})">Deletar</button></td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (err) {
+        alert('Erro ao carregar usuários');
+      }
+    }
+
+    async function addUser() {
+      const username = document.getElementById('new-username').value;
+      const canInstall = document.getElementById('can-install').checked;
+
+      try {
+        const res = await fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ username, canInstall })
+        });
+        if (res.ok) {
+          document.getElementById('new-username').value = '';
+          document.getElementById('can-install').checked = false;
+          loadUsers();
+        } else {
+          const data = await res.json();
+          alert(data.error || 'Erro ao adicionar usuário');
+        }
+      } catch (err) {
+        alert('Erro ao adicionar usuário');
+      }
+    }
+
+    async function updatePermission(id, canInstall) {
+      try {
+        const res = await fetch(`/api/users/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ canInstall })
+        });
+        if (!res.ok) {
+          const data = await res.json();
+          alert(data.error || 'Erro ao atualizar permissão');
+          loadUsers();
+        }
+      } catch (err) {
+        alert('Erro ao atualizar permissão');
+        loadUsers();
+      }
+    }
+
+    async function deleteUser(id) {
+      if (!confirm('Tem certeza que deseja deletar este usuário?')) return;
+
+      try {
+        const res = await fetch(`/api/users/${id}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          loadUsers();
+        } else {
+          const data = await res.json();
+          alert(data.error || 'Erro ao deletar usuário');
+        }
+      } catch (err) {
+        alert('Erro ao deletar usuário');
+      }
+    }
+
+    function logout() {
+      token = null;
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('user-management').style.display = 'none';
+      document.getElementById('login-error').textContent = '';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+</body>
+</html>
